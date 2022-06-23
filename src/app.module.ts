@@ -8,7 +8,7 @@ import { TypeOrmModule} from '@nestjs/typeorm';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      url: 'postgres://user:password@localhost:35000/firstdb',
+      url: 'postgres://user:password@https://sllipypong.herokuapp.com/firstdb',
       autoLoadEntities: true,
       synchronize: true
     }),
