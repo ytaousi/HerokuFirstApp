@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+  postgres:
+        image: postgres:10.4
+        ports:
+            - "35000:5432"
+        environment:
+          POSTGRES_USER: user
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: firstdb
+
+        volumes:
+            - database:/var/lib/postgresql/data
+        restart: always
+  pgadmin4:
+        image: dpage/pgadmin4
+        ports:
+            - "8082:80"
+        environment:
+          PGADMIN_DEFAULT_EMAIL: admin@admin.com
+          PGADMIN_DEFAULT_PASSWORD: admin
+
+        volumes:
+            - pgadmin:/var/lib/pgadmin
+        depends_on:
+            - postgres
+
+volumes:
+  database:
+  pgadmin:
